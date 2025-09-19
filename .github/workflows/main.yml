@@ -1,0 +1,35 @@
+name: Build Sistema Bertello
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Chequear el repo
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Compilar proyecto
+        run: npm run build
+
+      - name: Empaquetar instalador
+        run: npx electron-builder --win
+
+      - name: Guardar artefactos (.exe)
+        uses: actions/upload-artifact@v3
+        with:
+          name: instalador-windows
+          path: dist/*.exe
