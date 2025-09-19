@@ -1,8 +1,32 @@
 {
   "name": "sebabiblio",
   "version": "1.0.0",
+  "description": "Sistema integral de gestión bibliotecaria portable",
+  "author": "Tu Nombre",
   "main": "app/main.js",
   "scripts": {
-    "build": "echo Simulando build de SebaBiblio y ConsolaCreador"
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "electron": "^28.2.3"
+  },
+  "devDependencies": {
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.sebabiblio.app",
+    "productName": "SebaBiblio",
+    "files": [
+      "app/**/*",
+      "db/**/*",
+      "consola/**/*",
+      "build/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "artifactName": "SebaBiblio_Setup.exe"
+    }
   }
 }
