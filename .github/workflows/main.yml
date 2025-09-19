@@ -1,10 +1,10 @@
-name: Build Sistema Bertello
+name: build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Chequear el repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Instalar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
 
       - name: Instalar dependencias
         run: npm install
@@ -25,11 +25,8 @@ jobs:
       - name: Compilar proyecto
         run: npm run build
 
-      - name: Empaquetar instalador
-        run: npx electron-builder --win --config.extraMetadata.name="SebaBiblio" --config.win.artifactName="SebaBiblio_Setup.exe"
-
-      - name: Guardar artefactos (.exe)
+      - name: Subir instalador como artefacto
         uses: actions/upload-artifact@v4
         with:
-          name: instalador
+          name: SebaBiblio_instalador
           path: dist/*.exe
