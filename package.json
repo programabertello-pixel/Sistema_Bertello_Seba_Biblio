@@ -1,0 +1,8 @@
+{
+  "name": "sebabiblio",
+  "version": "1.0.0",
+  "main": "app/main.js",
+  "scripts": {
+    "build": "echo Simulando build de SebaBiblio y ConsolaCreador"
+  }
+}
