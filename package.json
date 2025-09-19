@@ -2,22 +2,24 @@
   "name": "sebabiblio",
   "version": "1.0.0",
   "description": "Sistema integral de gestión bibliotecaria portable",
-  "author": "Seba Bertello",
+  "author": "Tu Nombre",
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
     "build": "electron-builder"
   },
-  "dependencies": {},
+  "dependencies": {
+    "electron": "^28.2.3"
+  },
   "devDependencies": {
-    "electron": "^28.2.3",
     "electron-builder": "^26.0.12"
   },
   "build": {
     "appId": "com.sebabiblio.app",
     "productName": "SebaBiblio",
+    "directories": {
+      "output": "dist"
+    },
     "files": [
       "app/**/*",
       "db/**/*",
@@ -25,13 +27,10 @@
       "build/**/*",
       "package.json"
     ],
-    "directories": {
-      "buildResources": "build"
-    },
     "win": {
       "target": "nsis",
       "artifactName": "SebaBiblio_Setup.exe"
     },
-    "publish": []
+    "publish": "never"
   }
 }
