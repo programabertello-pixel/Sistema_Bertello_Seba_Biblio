@@ -26,6 +26,6 @@
       "target": "nsis",
       "artifactName": "SebaBiblio_Setup.exe"
     },
-    "publish": "never"
+    "publish": []
   }
 }
